@@ -1,26 +1,64 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>doodle-drag-resize</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-
-    <meta property="og:title" content="doodle-drag-resize" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
-
-  <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative Whiteboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="toolbar">
+            <h1>Whiteboard</h1>
+            <div class="tool-group">
+                <label for="image-upload" class="tool-btn" title="Upload Image">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"></path>
+                    </svg>
+                    <span>Upload</span>
+                    <input type="file" id="image-upload" accept="image/*" hidden>
+                </label>
+                
+                <button id="draw-tool" class="tool-btn" title="Draw">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z"></path>
+                    </svg>
+                    <span>Draw</span>
+                </button>
+                
+                <button id="move-tool" class="tool-btn active" title="Move">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M13,6V11H18V7.75L22.25,12L18,16.25V13H13V18H16.25L12,22.25L7.75,18H11V13H6V16.25L1.75,12L6,7.75V11H11V6H7.75L12,1.75L16.25,6H13Z"></path>
+                    </svg>
+                    <span>Move</span>
+                </button>
+                
+                <button id="clear-canvas" class="tool-btn" title="Clear All">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"></path>
+                    </svg>
+                    <span>Clear</span>
+                </button>
+            </div>
+            
+            <div class="draw-options" style="display: none;">
+                <div class="color-picker">
+                    <label>Color:</label>
+                    <input type="color" id="brush-color" value="#000000">
+                </div>
+                <div class="size-picker">
+                    <label>Size:</label>
+                    <input type="range" id="brush-size" min="1" max="20" value="5">
+                    <span id="size-value">5px</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="canvas-container">
+            <canvas id="main-canvas"></canvas>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
 </html>
